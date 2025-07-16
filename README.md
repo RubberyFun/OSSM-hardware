@@ -141,14 +141,26 @@ H is a longer bearing block than C for greater stability. 12 indicates 12mm rail
 
 **Fasteners**  
 
-    (Qty 8) M3x8  Socket Cap Head Bolt 
-    (Qty 2) M3x16 Socket Cap Head Bolt 
-    (Qty 1) M3x20 Socket Cap Head Bolt 
-    (Qty 7) M3 Hex Nut
+    (Qty 10) M3x8  Socket Cap Head Bolt 
+    (Qty 2) M3x20 Socket Cap Head Bolt 
+    (Qty 8) M3 Hex Nut
     (Qty 3) M5x20 Socket Cap Head Bolt
     (Qty 1) M5 Hex Nut
     (Qty 4) M5x35 Socket Cap Head Bolt 
     (Qty 4) M5 20mm Hex Coupling Nut (Or M5 Hex Nut)
+
+
+ Recently, the standard thread and belt clamp recommendations have been reverted to the 'classic' design from the 24mm Clamping Thread.  
+ Browse the Non-standard directory for alternative belt clamp and thread designs.  
+ Some preconfigured 3mf files and renders may still show a 24mm Clamping Thread design which combines the thread and belt tensioner.  
+
+(Alternative) 24mm Clamping Thread BOM:  
+    
+    (Qty 2) M3x16 Socket Cap Head Bolt
+    (Qty 2) M3 Hex Nuts
+    Replaces hardware above:
+    (Qty 2) M3x8 Socket Cap Head Bolt
+    (Qty 1) M3x20 Socket Cap Head Bolt
 
 **Additional hardware is required for Stand, Mounting, Remote  
 Detailed in their respective [Printed Parts](Printed%20Parts/) folder**
