@@ -46,6 +46,8 @@
         - [OSSM Full Extrusion Mount](<Hardware/[LEGACY] OSSM Printed Parts/OSSM Mounting/OSSM - Full Extrusion Mount/README.md>)
         - [OSSM Basic Mount](<Hardware/[LEGACY] OSSM Printed Parts/OSSM Mounting/OSSM - Basic Mount/README.md>)
         - [Readme](<Hardware/[LEGACY] OSSM Printed Parts/OSSM Mounting/Deprecated - Ball Head Mount/readme.md>)
+      * [End Effector Options](<Hardware/[LEGACY] OSSM Printed Parts/end effector options/README.md>)
+        * [24mm Threaded](<Hardware/[LEGACY] OSSM Printed Parts/end effector options/24mm threaded/README.md>)
 - [Printed Parts](<Printed Parts/README.md>)
   - [Actuator](<Printed Parts/Actuator/README.md>)
   - [Mounting](<Printed Parts/Mounting/README.md>)
