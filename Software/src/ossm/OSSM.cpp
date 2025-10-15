@@ -82,11 +82,11 @@ void OSSM::drawHelloTask(void *pvParameters) {
             xSemaphoreGive(displayMutex);
         }
         // Saying hi to the watchdog :).
-        vTaskDelay(1);
+        vTaskDelay(pdMS_TO_TICKS(1));
     };
 
     // Delay for a second, then show the RDLogo.
-    vTaskDelay(1500);
+    vTaskDelay(pdMS_TO_TICKS(1500));
 
     if (xSemaphoreTake(displayMutex, 100) == pdTRUE) {
         clearPage(true, true);
@@ -96,7 +96,7 @@ void OSSM::drawHelloTask(void *pvParameters) {
         xSemaphoreGive(displayMutex);
     }
 
-    vTaskDelay(1000);
+    vTaskDelay(pdMS_TO_TICKS(1000));
 
     if (xSemaphoreTake(displayMutex, 100) == pdTRUE) {
         clearPage(true, true);
@@ -106,7 +106,7 @@ void OSSM::drawHelloTask(void *pvParameters) {
         xSemaphoreGive(displayMutex);
     }
 
-    vTaskDelay(1000);
+    vTaskDelay(pdMS_TO_TICKS(1000));
 
     if (xSemaphoreTake(displayMutex, 100) == pdTRUE) {
         clearPage(true, true);

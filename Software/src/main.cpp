@@ -34,23 +34,29 @@ OneButton button(Pins::Remote::encoderSwitch, false);
 void setup() {
     /** Board setup */
     initBoard();
+    yield(); // Feed watchdog
 
     ESP_LOGD("MAIN", "Starting OSSM");
 
     initWM();
+    yield(); // Feed watchdog
 
     // Display
     initDisplay();
+    yield(); // Feed watchdog
 
     // Initialize header bar task
     initHeaderBar();
+    yield(); // Feed watchdog
 
     ossm = new OSSM(display, encoder, stepper);
     ossmInterface = ossm;
+    yield(); // Feed watchdog
 
     // Initialize LED for BLE and machine status indication
     ESP_LOGI("MAIN", "LED initialized for BLE and machine status indication");
     updateLEDForMachineStatus();  // Set initial LED state
+    yield(); // Feed watchdog
 
     // // link functions to be called on events.
     button.attachClick([]() { ossm->sm->process_event(ButtonPress{}); });
@@ -85,6 +91,8 @@ void setup() {
         },
         "initNimbleTask", 6 * configMINIMAL_STACK_SIZE, nullptr,
         configMAX_PRIORITIES - 1, nullptr, 0);
+        
+    ESP_LOGI("MAIN", "Setup completed successfully");
 };
 
 void loop() { vTaskDelete(nullptr); };

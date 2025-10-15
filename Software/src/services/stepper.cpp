@@ -15,7 +15,13 @@ void initStepper() {
 
     // disable motor briefly in case we are against a hard stop.
     digitalWrite(Pins::Driver::motorEnablePin, HIGH);
-    delay(600);
+    
+    // Feed watchdog during long delay to prevent timeout
+    for (int i = 0; i < 60; i++) {
+        vTaskDelay(pdMS_TO_TICKS(10)); // 10ms * 60 = 600ms total
+        yield(); // Allow other tasks to run and feed watchdog
+    }
+    
     digitalWrite(Pins::Driver::motorEnablePin, LOW);
-    delay(100);
+    vTaskDelay(pdMS_TO_TICKS(100)); // Non-blocking delay
 }

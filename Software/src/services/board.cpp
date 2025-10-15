@@ -4,6 +4,7 @@ bool USE_SPEED_KNOB_AS_LIMIT = true;
 
 void initBoard() {
     Serial.begin(115200);
+    ESP_LOGI("BOARD", "Board initialization starting...");
 
     pinMode(Pins::Remote::encoderSwitch,
             INPUT_PULLDOWN);  // Rotary Encoder Pushbutton
@@ -19,7 +20,18 @@ void initBoard() {
 
     analogReadResolution(12);
     analogSetAttenuation(ADC_11db);  // allows us to read almost full 3.3V range
+    
+    ESP_LOGI("BOARD", "Initializing stepper...");
     initStepper();
+    yield(); // Feed watchdog after stepper init
+    
+    ESP_LOGI("BOARD", "Initializing encoder...");
     initEncoder();
+    yield(); // Feed watchdog after encoder init
+    
+    ESP_LOGI("BOARD", "Initializing LED...");
     initLED();
+    yield(); // Feed watchdog after LED init
+    
+    ESP_LOGI("BOARD", "Board initialization completed successfully");
 }

@@ -39,7 +39,7 @@ void setLEDBrightness(uint8_t brightness) {
 
 void flashLED(CRGB color, int duration_ms) {
     setLEDColor(color);
-    delay(duration_ms);
+    vTaskDelay(pdMS_TO_TICKS(duration_ms)); // Use FreeRTOS delay instead of blocking delay
     setLEDOff();
 }
 

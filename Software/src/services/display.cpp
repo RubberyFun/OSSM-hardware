@@ -19,16 +19,26 @@ void initDisplay() {
         displayMutex = xSemaphoreCreateMutex();
         if (displayMutex == nullptr) {
             ESP_LOGE(TAG, "Failed to create display mutex");
+            return; // Prevent further initialization if mutex creation fails
         }
     }
-    display.begin();
-    display.setI2CAddress(0x3C << 1);  // 0x3C is common for 128x64 OLEDs
-    display.setPowerSave(0);
-    display.setContrast(255);
-    display.clearBuffer();
-    display.sendBuffer();
-
-    ESP_LOGI(TAG, "Display initialization complete.");
+    
+    try {
+        display.begin();
+        yield(); // Feed watchdog during display initialization
+        
+        display.setI2CAddress(0x3C << 1);  // 0x3C is common for 128x64 OLEDs
+        display.setPowerSave(0);
+        display.setContrast(255);
+        display.clearBuffer();
+        display.sendBuffer();
+        
+        ESP_LOGI(TAG, "Display initialization complete.");
+    } catch (const std::exception& e) {
+        ESP_LOGE(TAG, "Display initialization failed: %s", e.what());
+    } catch (...) {
+        ESP_LOGE(TAG, "Display initialization failed with unknown error");
+    }
 }
 
 #define ICON_TILES 4
